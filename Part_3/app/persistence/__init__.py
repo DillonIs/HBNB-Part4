@@ -4,10 +4,10 @@ from sqlalchemy import create_engine, text, select
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 # Hardcoded credentials - PLEASE DON'T DO THIS IN PRODUCTION
-USER = "hbnb_evo_2"
-PWD = "hbnb_evo_2_pwd"
+USER = "root"
+PWD = ""
 HOST = "localhost"
-DB = "hbnb_evo_2_db"
+DB = "hbnbV4"
 
 Base = declarative_base()
 

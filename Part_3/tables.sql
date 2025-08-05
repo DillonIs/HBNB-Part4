@@ -1,6 +1,6 @@
 -- Create and use the specified database
-CREATE DATABASE IF NOT EXISTS hbnb_evo_2_db;
-USE hbnb_evo_2_db;
+CREATE DATABASE IF NOT EXISTS hbnbV4;
+USE hbnbV4;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (

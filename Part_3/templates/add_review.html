@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <!-- Add something to idfentify the place you're reviewing -->
+        <input type="hidden" id="place-id" name="place-id" value="DYNAMICALLY-INSERT-ACTUAL-PLACE-ID">
+
+        <form id="review-form">
+            <h1>Reviewing: The place being reviewed</h1>
+            <h2>Add a Review</h2>
+            <label for="review">Your Review:</label>
+            <textarea id="review" name="review" required></textarea>
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button type="submit">Submit Review</button>
+        </form>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+<footer>
+    © 2024 HBnB Evolution. All rights reserved.
+</footer>
+</html>

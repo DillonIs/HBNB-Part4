@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Places</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="filter">
+            <label for="price-filter">Max Price:</label>
+            <select id="price-filter">
+                <!-- Options will be populated dynamically -->
+            </select>
+        </section>
+        <section id="places-list">
+            <!-- List of places will be populated dynamically -->
+    
+            <div class="place-card">
+                <h3>Cozy Cabin</h3>
+                <p>Price per night: $150</p>
+                <button type="submit" class="details-button">View Details</button>
+            </div>
+
+            <div class="place-card">
+                <h3>Beach House</h3>
+                <p>Price per night: $300</p>
+                <button type="submit" class="details-button">View Details</button>
+            </div>
+
+            <div class="place-card">
+                <h3>Urban Loft</h3>
+                <p>Price per night: $220</p>
+                <button type="submit" class="details-button">View Details</button>
+            </div>
+
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>

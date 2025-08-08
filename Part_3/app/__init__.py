@@ -1,5 +1,5 @@
 """ Constructor for the 'app' module """
-from flask import Flask
+from flask import Flask, render_template
 from flask_restx import Api
 from flask_jwt_extended import JWTManager
 from app.api.v1.users import api as users_ns
@@ -29,5 +29,19 @@ def create_app():
 
     app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'  # Use a strong and unique key in production
     jwt = JWTManager(app)
+
+    @app.route('/login')
+    def login_page():
+        return render_template('login.html')
+    
+    @app.route('/place/<place_id>', methods=['GET'])
+    def place_details(place_id):
+        """Render the HTML template for a place"""
+        return render_template('place.html', place_id=place_id)
+    
+    @app.route('/index')
+    def home():
+        """Show home page"""
+        return render_template('index.html')
 
     return app

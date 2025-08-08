@@ -9,7 +9,8 @@ api = Namespace('users', description='User operations')
 user_model = api.model('User', {
     'first_name': fields.String(required=True, description='First name of the user'),
     'last_name': fields.String(required=True, description='Last name of the user'),
-    'email': fields.String(required=True, description='Email of the user')
+    'email': fields.String(required=True, description='Email of the user'),
+    'password': fields.String(required=True, description='Password for the user')
 })
 
 # facade = HBnBFacade()
@@ -22,7 +23,7 @@ class UserList(Resource):
     @api.response(400, 'Invalid input data')
     @api.response(400, 'Setter validation failure')
     @api.response(403, 'Admin privileges required')
-    @jwt_required()
+   # @jwt_required()
     def post(self):
         # Create the user
         # curl -X POST "http://127.0.0.1:5000/api/v1/users/" -H "Content-Type: application/json" -H "Authorization: Bearer <token_goes_here>" -d '{ "first_name": "John", "last_name": "Doe", "email": "john.doe@example.com", "password": "cowabunga", "is_admin": true}'
@@ -33,9 +34,9 @@ class UserList(Resource):
         # a user first. See the problem?!?!?
 
         """Register a new user"""
-        claims = get_jwt()
-        if not claims.get('is_admin', True):
-            return {'error': 'Admin privileges required'}, 403
+        #claims = get_jwt()
+        #if not claims.get('is_admin', True):
+            #return {'error': 'Admin privileges required'}, 403
 
         user_data = api.payload
 

@@ -1,0 +1,183 @@
+/* 
+  This is a SAMPLE File to get you started. Follow the instructions on the project to complete the tasks. 
+  You'll probably need to override some of theese styles.
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/*
+Header
+*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center; /* vertically centers items */
+  justify-content: space-between; /* optional: space out logo and nav */
+  padding: 10px 20px;
+  background-color: #333;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  max-width: fit-content;
+}
+
+.logo img {
+  height: 70px; /* adjust as needed */
+  margin-right: 10px;
+}
+
+
+/*
+Nav bar
+*/
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    max-width: fit-content;
+    margin-right: 100px;
+
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+    padding: 8px 12px;
+}
+
+.navbar a:hover {
+  background-color: orange;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+}
+
+nav li {
+    margin-right: 20px;
+    color: white;
+}
+
+main {
+    padding: 2rem;
+}
+
+/*
+Login Button
+*/
+
+.login-button {
+    background-color: #333;  /* blue */
+    color: white;
+    cursor: pointer;
+    font-size: medium;
+    border-radius: 8px; 
+}
+
+.login-button:hover {
+    background-color: orange;
+}
+
+#login-form {
+   background-color: rgb(214, 213, 213);
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.log {
+    margin-bottom: 5px;
+}
+
+/*
+index
+*/
+
+#filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  gap: 10px;
+}
+
+#places-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.place-card {
+  width: 250px;
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.place-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.place-card p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.details-button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
+}
+
+/*
+Footer
+*/
+.site-footer {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+}

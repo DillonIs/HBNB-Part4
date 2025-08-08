@@ -1,5 +1,6 @@
 from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import create_access_token
+from flask import make_response
 # from app.services.facade import HBnBFacade
 from app.services import facade
 
@@ -34,5 +35,7 @@ class Login(Resource):
         # Step 3: Create a JWT token with the user's id and is_admin flag
         access_token = create_access_token(identity={'id': str(user.id), 'is_admin': user.is_admin})
 
-        # Step 4: Return the JWT token to the client
-        return {'access_token': access_token}, 200
+        # Step 4: Create cookie
+        response = make_response({'message': 'Login successful', 'access_token': access_token})
+        response.set_cookie('access_token', access_token)
+        return response

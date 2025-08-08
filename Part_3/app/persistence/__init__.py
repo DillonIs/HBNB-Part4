@@ -5,9 +5,10 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 # Hardcoded credentials - PLEASE DON'T DO THIS IN PRODUCTION
 USER = "root"
-PWD = ""
+PWD = "root"
 HOST = "localhost"
-DB = "hbnbV4"
+DB = "hbnb_evo_2_db"
+
 
 Base = declarative_base()
 

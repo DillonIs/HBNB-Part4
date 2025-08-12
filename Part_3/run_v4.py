@@ -26,6 +26,7 @@ def index():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
 # Need to add CORS so that we can do API calls in Part 4
 # Note the doc parameter in the Api() function call. This is path where the swagger will be located from now on.
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})

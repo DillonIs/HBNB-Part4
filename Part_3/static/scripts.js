@@ -1,16 +1,20 @@
 function getPlaceIdFromURL() {
     const query_String = window.location.search;
     const params = new URLSearchParams(query_String);
-    return params.get('place_id');
+    return params.get('id');
 }
 
 function checkAuthentication() {
     const token = getCookie('token');
 
-
     if (!token) {
-        window.location.href = 'index.html';
+        // window.location.href = 'index.html';
+        addReviewSection.style.display = 'none';
         return null;
+    } else {
+        addReviewSection.style.display = 'block';
+        console.log(token);
+        fetchPlaceDetails(token, placeId);
     }
     return token;
 }
@@ -32,7 +36,7 @@ function getCookie(name) {
 }
 
 async function fetchPlaceDetails(token, placeId) {
-    const url = `http://127.0.0.1:5000/api/v1/places/${placeId}`;
+    const url = `http://127.0.0.1:5000/place/${placeId}`;
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -46,7 +50,8 @@ async function fetchPlaceDetails(token, placeId) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        return await response.json();
+        const data = await response.json();
+        displayPlaceDetails(data);
     } catch (error) {
         console.error('Error fetching place details:', error);
         throw error;
@@ -54,7 +59,9 @@ async function fetchPlaceDetails(token, placeId) {
 }
 
 function displayPlaceDetails(place) {
+    console.log(place);
     const sectionClear = document.getElementById('place-details');
+    console.log(sectionClear);
     sectionClear.innerHTML = '';
 
     const cardDiv = document.createElement('div');
@@ -125,7 +132,7 @@ function displayPlaceDetails(place) {
 
 async function submitReview(token, placeId, reviewText) {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/api/v1/places/${placeId}/reviews`, {
+        const response = await fetch(`http://127.0.0.1:5000/place/${placeId}/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -165,6 +172,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const place = await fetchPlaceDetails(token, placeId);
         displayPlaceDetails(place);
+        console.log(place);
     } catch (error) {
         console.error('Could not fetch place details:', error);
     }

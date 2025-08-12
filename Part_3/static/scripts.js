@@ -1,8 +1,9 @@
 function getPlaceIdFromURL() {
-    const query_String = window.location.search;
-    const params = new URLSearchParams(query_String);
-    return params.get('id');
+    const pathSegments = window.location.pathname.split('/');
+    return pathSegments[pathSegments.length - 1];
 }
+
+const addReviewSection = document.getElementById('add-review');
 
 function checkAuthentication() {
     const token = getCookie('token');
@@ -14,7 +15,6 @@ function checkAuthentication() {
     } else {
         addReviewSection.style.display = 'block';
         console.log(token);
-        fetchPlaceDetails(token, placeId);
     }
     return token;
 }
@@ -36,7 +36,8 @@ function getCookie(name) {
 }
 
 async function fetchPlaceDetails(token, placeId) {
-    const url = `http://127.0.0.1:5000/place/${placeId}`;
+    console.log('Fetching place with id:', placeId);
+    const url = `/api/v1/places/${placeId}`;
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -132,7 +133,7 @@ function displayPlaceDetails(place) {
 
 async function submitReview(token, placeId, reviewText) {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/place/${placeId}/reviews`, {
+        const response = await fetch(`/api/v1/places/${placeId}/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -158,21 +159,30 @@ async function submitReview(token, placeId, reviewText) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const token = checkAuthentication();
-    if (!token) return;
-
     const placeId = getPlaceIdFromURL();
-    if (!placeId) return;
+    if (!placeId) {
+        console.error('No place ID found');
+        return;
+    }
 
+    const token = checkAuthentication();
     const addReviewSection = document.getElementById('add-review');
-    if (addReviewSection) {
-        addReviewSection.style.display = 'block';
+
+    if (!token) {
+        console.warn('User not logged in');
+        if (addReviewSection) addReviewSection.style.display = 'none'
+        return;
+    } else {
+        if (addReviewSection) addReviewSection.style.display = 'block';
+    }
+
+    const placeIdDisplay = document.getElementById('review-place-id');
+    if (placeIdDisplay) {
+        placeIdDisplay.textContent = `Reviewing Place: ${placeId}`;
     }
 
     try {
-        const place = await fetchPlaceDetails(token, placeId);
-        displayPlaceDetails(place);
-        console.log(place);
+        await fetchPlaceDetails(token, placeId);
     } catch (error) {
         console.error('Could not fetch place details:', error);
     }

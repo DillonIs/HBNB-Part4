@@ -35,7 +35,9 @@
             </form>
         </section>
     </main>
-    <script src="/HBNB-Part4/Part_3/static/scripts.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}">
+        const placeId = "{{ place_id}}";
+    </script>
 </body>
 <footer>
     © 2025 HBnB Evolution. All rights reserved.

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Review</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <main>
@@ -12,7 +12,7 @@
         <input type="hidden" id="place-id" name="place-id" value="DYNAMICALLY-INSERT-ACTUAL-PLACE-ID">
 
         <form id="review-form">
-            <h1>Reviewing:</h1>
+            <h1 id="review-place-id"></h1>
             <h2>Add a Review</h2>
             <label for="review">Your Review:</label>
             <textarea id="review" name="review" required></textarea>
@@ -27,7 +27,7 @@
             <button type="submit">Submit Review</button>
         </form>
     </main>
-    <script src="scripts.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 <footer>
     © 2024 HBnB Evolution. All rights reserved.

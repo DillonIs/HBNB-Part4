@@ -1,5 +1,5 @@
 from app import create_app
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_restx import Api
 from flask_jwt_extended import JWTManager
 from app.api.v1.users import api as users_ns
@@ -29,8 +29,12 @@ def login():
 
 # place details
 @app.route('/place')
-def place_details():
-    return render_template('place.html')
+def default_place():
+    return redirect(url_for('place_details', id='place-123'))
+
+@app.route('/place/<string:id>')
+def place_details(id):
+    return render_template('place.html', place_id=id)
 
 # add review
 @app.route('/review')

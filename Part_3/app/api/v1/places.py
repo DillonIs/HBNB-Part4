@@ -138,12 +138,12 @@ class PlaceResource(Resource):
         if not place:
             return {'error': 'Place not found'}, 404
 
-        owner = place.owner
+        owner = place.owner_r
         if not owner:
             return {'error': 'Place owner not found'}, 404
 
         amenities_list = []
-        for amenity in place.amenities:
+        for amenity in place.amenities_r:
             amenities_list.append({
                 'id': str(amenity.id),
                 'name': amenity.name

@@ -256,3 +256,89 @@ footer {
     text-align: center;
     margin-top: auto;
 }
+
+/* ===== Place page (non-breaking additions) ===== */
+
+/* two-column layout for details + review panel */
+.place-grid{
+  display:grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap:24px;
+  width:min(1100px, 92vw);
+  margin:40px auto 80px;
+  align-items:start;
+}
+
+/* collapse to one column on small screens */
+@media (max-width: 900px){
+  .place-grid{ grid-template-columns: 1fr; }
+}
+
+/* details card & review card minor refinements */
+.card--details h1,
+#place-details h1{
+  margin: 0 0 10px 0;
+}
+
+.card--review h2{
+  margin-bottom: 6px;
+}
+
+/* subtle muted text helper */
+.muted{ color:#6b7280; }
+
+/* review form polish (only targets the review form) */
+#review-form{
+  display:grid;
+  gap:10px;
+  margin-top:10px;
+}
+
+#review-form label{
+  font-weight:600;
+  color:#6b7280;
+}
+
+#review-form textarea{
+  width:100%;
+  min-height:110px;
+  padding:12px 14px;
+  border:1px solid #d6d6d6;
+  border-radius:10px;
+  resize:vertical;
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+  background:#fff;
+}
+
+#review-form textarea:focus{
+  border-color:#6aa9ff;
+  box-shadow:0 0 0 3px rgba(106,169,255,.25);
+}
+
+/* button look for the review submit (doesn't touch .details-button) */
+#review-form button{
+  align-self:start;
+  padding:10px 16px;
+  border:0;
+  border-radius:10px;
+  background:#007bff;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .15s ease, transform .05s ease;
+}
+#review-form button:hover{ background:#0065d1; }
+#review-form button:active{ transform: translateY(1px); }
+
+/* optional chips if you render amenities as spans */
+.amenities{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.chip{
+  background:#eef2ff;
+  color:#3730a3;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+}
+

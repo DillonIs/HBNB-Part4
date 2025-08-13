@@ -8,11 +8,13 @@
 </head>
 <body>
     <main>
+        <h1 id="review-place-id"></h1>
+        <div id="place-details"></div>
         <!-- Add something to idfentify the place you're reviewing -->
-        <input type="hidden" id="place-id" name="place-id" value="DYNAMICALLY-INSERT-ACTUAL-PLACE-ID">
+        <section id="add-review">
+        <input type="hidden" id="place-id" name="place-id" value="{{ place_id }}">
 
         <form id="review-form">
-            <h1 id="review-place-id"></h1>
             <h2>Add a Review</h2>
             <label for="review">Your Review:</label>
             <textarea id="review" name="review" required></textarea>
@@ -26,10 +28,11 @@
             </select>
             <button type="submit">Submit Review</button>
         </form>
+        </section>
     </main>
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <footer>
+        © 2025 HBnB Evolution. All rights reserved.
+    </footer>
 </body>
-<footer>
-    © 2024 HBnB Evolution. All rights reserved.
-</footer>
 </html>

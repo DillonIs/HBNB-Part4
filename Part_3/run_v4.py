@@ -37,9 +37,9 @@ def place_details(id):
     return render_template('place.html', place_id=id)
 
 # add review
-@app.route('/review')
-def review():
-    return render_template('add_review.html')
+@app.route('/place/<string:id>/review')
+def review(id):
+    return render_template('add_review.html', place_id=id)
 
 # Need to add CORS so that we can do API calls in Part 4
 # Note the doc parameter in the Api() function call. This is path where the swagger will be located from now on.
